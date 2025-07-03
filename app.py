@@ -1,35 +1,30 @@
 import streamlit as st
 import pandas as pd
 
-# Cấu hình giao diện Streamlit
 st.set_page_config(page_title="Quản lý dữ liệu thuế", layout="wide")
 
-# Đọc dữ liệu từ file Excel có sẵn
+# Đọc dữ liệu từ file có sẵn
 @st.cache_data
 def load_data():
-    return pd.read_excel("a.xlsx")  # Đảm bảo file a.xlsx có trong cùng thư mục
+    return pd.read_excel("a.xlsx")
 
 df = load_data()
 col_names = df.columns.tolist()
 
 st.title("🔎 Quản lý dữ liệu thuế")
 
-# Tạo layout ngang gồm 3 ô nhập liệu
+# Tạo layout ngang cho 3 ô nhập
 col1, col2, col3 = st.columns(3)
 with col1:
-    st.text_input(f"{col_names[0]}", placeholder="Lọc...", key="filter1", on_change=st.experimental_rerun)
+    val1 = st.text_input(f"{col_names[0]}", placeholder="Lọc...", key="filter1")
 with col2:
-    st.text_input(f"{col_names[1]}", placeholder="Lọc...", key="filter2", on_change=st.experimental_rerun)
+    val2 = st.text_input(f"{col_names[1]}", placeholder="Lọc...", key="filter2")
 with col3:
-    st.text_input(f"{col_names[4]}", placeholder="Lọc...", key="filter5", on_change=st.experimental_rerun)
+    val5 = st.text_input(f"{col_names[4]}", placeholder="Lọc...", key="filter5")
 
-# Lấy giá trị đã nhập từ session_state
-val1 = st.session_state.get("filter1", "")
-val2 = st.session_state.get("filter2", "")
-val5 = st.session_state.get("filter5", "")
-
-# Lọc dữ liệu
+# Lọc dữ liệu realtime
 filtered_df = df.copy()
+
 if val1:
     filtered_df = filtered_df[filtered_df[col_names[0]].astype(str).str.contains(val1, case=False, na=False)]
 if val2:
@@ -37,10 +32,10 @@ if val2:
 if val5:
     filtered_df = filtered_df[filtered_df[col_names[4]].astype(str).str.contains(val5, case=False, na=False)]
 
-# Hiển thị kết quả lọc
-st.subheader("📊 Dữ liệu sau khi lọc")
+# Hiển thị kết quả
+st.subheader("📊 Dữ liệu")
 st.dataframe(filtered_df, use_container_width=True)
 
-# Tải dữ liệu lọc về CSV
+# Tải kết quả về CSV
 csv = filtered_df.to_csv(index=False).encode("utf-8")
 st.download_button("📥 Tải kết quả CSV", csv, "ketqua.csv", "text/csv")
