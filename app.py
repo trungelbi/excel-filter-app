@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-st.set_page_config(page_title="Bộ lọc dữ liệu Excel", layout="wide")
+st.set_page_config(page_title="Quản lý dữ liệu thuế", layout="wide")
 
 # Đọc dữ liệu từ file có sẵn
 @st.cache_data
@@ -11,7 +11,7 @@ def load_data():
 df = load_data()
 col_names = df.columns.tolist()
 
-st.title("🔎 Bộ lọc dữ liệu (theo 3 cột)")
+st.title("🔎 Quản lý dữ liệu thuế")
 
 # Tạo layout ngang cho 3 ô nhập
 col1, col2, col3 = st.columns(3)
@@ -33,7 +33,7 @@ if val5:
     filtered_df = filtered_df[filtered_df[col_names[4]].astype(str).str.contains(val5, case=False, na=False)]
 
 # Hiển thị kết quả
-st.subheader("📊 Kết quả lọc")
+st.subheader("📊 Dữ liệu")
 st.dataframe(filtered_df, use_container_width=True)
 
 # Tải kết quả về CSV
