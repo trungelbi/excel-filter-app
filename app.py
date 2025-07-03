@@ -4,13 +4,14 @@ import pandas as pd
 st.set_page_config(page_title="Quản lý dữ liệu hoá đơn rủi ro", layout="wide")
 st.markdown(
     """
-    <style>
-    .stApp img:first-of-type {
-        width: 100% !important;
-        height: 800px !important;
-        object-fit: cover;
-    }
-    </style>
+    <div style="text-align:center">
+        <img src="banner.jpg" style="
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            object-position: top;
+        ">
+    </div>
     """,
     unsafe_allow_html=True
 )
