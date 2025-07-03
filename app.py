@@ -1,29 +1,30 @@
 import streamlit as st
 import pandas as pd
 
-# Đọc file Excel có sẵn (cùng thư mục)
+st.set_page_config(page_title="Bộ lọc dữ liệu Excel", layout="wide")
+
+# Đọc dữ liệu từ file có sẵn
 @st.cache_data
 def load_data():
     return pd.read_excel("a.xlsx")
 
 df = load_data()
-
-st.title("🔍 Bộ lọc dữ liệu (3 cột)")
-
-# Hiển thị dữ liệu gốc
-st.subheader("📋 Dữ liệu gốc")
-st.dataframe(df)
-
-# Giả sử cột 1, 2 và 5 là tên cột thực tế
 col_names = df.columns.tolist()
 
-# Tạo 3 ô lọc theo cột 1, 2, 5
-val1 = st.text_input(f"Lọc theo {col_names[0]}")
-val2 = st.text_input(f"Lọc theo {col_names[1]}")
-val5 = st.text_input(f"Lọc theo {col_names[4]}")
+st.title("🔎 Bộ lọc dữ liệu (theo 3 cột)")
 
-# Lọc dữ liệu
+# Tạo layout ngang cho 3 ô nhập
+col1, col2, col3 = st.columns(3)
+with col1:
+    val1 = st.text_input(f"{col_names[0]}", placeholder="Lọc...", key="filter1")
+with col2:
+    val2 = st.text_input(f"{col_names[1]}", placeholder="Lọc...", key="filter2")
+with col3:
+    val5 = st.text_input(f"{col_names[4]}", placeholder="Lọc...", key="filter5")
+
+# Lọc dữ liệu realtime
 filtered_df = df.copy()
+
 if val1:
     filtered_df = filtered_df[filtered_df[col_names[0]].astype(str).str.contains(val1, case=False, na=False)]
 if val2:
@@ -31,10 +32,10 @@ if val2:
 if val5:
     filtered_df = filtered_df[filtered_df[col_names[4]].astype(str).str.contains(val5, case=False, na=False)]
 
-# Hiển thị kết quả lọc
-st.subheader("📊 Kết quả sau khi lọc")
-st.dataframe(filtered_df)
+# Hiển thị kết quả
+st.subheader("📊 Kết quả lọc")
+st.dataframe(filtered_df, use_container_width=True)
 
-# Cho tải về
+# Tải kết quả về CSV
 csv = filtered_df.to_csv(index=False).encode("utf-8")
 st.download_button("📥 Tải kết quả CSV", csv, "ketqua.csv", "text/csv")
