@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-st.set_page_config(page_title="Quản lý dữ liệu thuế", layout="wide")
+st.set_page_config(page_title="Quản lý dữ liệu hoá đơn rủi ro", layout="wide")
 
 # Đọc dữ liệu từ file có sẵn
 @st.cache_data
@@ -37,5 +37,6 @@ st.subheader("📊 Dữ liệu")
 st.dataframe(filtered_df, use_container_width=True)
 
 # Tải kết quả về CSV
-csv = filtered_df.to_csv(index=False).encode("utf-8")
+csv = filtered_df.to_csv(index=False).encode("utf-8-sig")
+
 st.download_button("📥 Tải kết quả CSV", csv, "ketqua.csv", "text/csv")
