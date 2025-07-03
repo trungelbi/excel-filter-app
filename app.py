@@ -11,7 +11,7 @@ def load_data():
 df = load_data()
 col_names = df.columns.tolist()
 
-st.title("🔎 Quản lý dữ liệu thuế")
+st.title("🔎 Quản lý dữ liệu hoá đơn rủi ro")
 
 # Tạo layout ngang cho 3 ô nhập
 col1, col2, col3 = st.columns(3)
@@ -20,7 +20,7 @@ with col1:
 with col2:
     val2 = st.text_input(f"{col_names[1]}", placeholder="Lọc...", key="filter2")
 with col3:
-    val5 = st.text_input(f"{col_names[4]}", placeholder="Lọc...", key="filter5")
+    val5 = st.text_input(f"{col_names[2]}", placeholder="Lọc...", key="filter5")
 
 # Lọc dữ liệu realtime
 filtered_df = df.copy()
@@ -30,7 +30,7 @@ if val1:
 if val2:
     filtered_df = filtered_df[filtered_df[col_names[1]].astype(str).str.contains(val2, case=False, na=False)]
 if val5:
-    filtered_df = filtered_df[filtered_df[col_names[4]].astype(str).str.contains(val5, case=False, na=False)]
+    filtered_df = filtered_df[filtered_df[col_names[2]].astype(str).str.contains(val5, case=False, na=False)]
 
 # Hiển thị kết quả
 st.subheader("📊 Dữ liệu")
