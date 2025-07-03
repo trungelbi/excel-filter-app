@@ -2,7 +2,8 @@ import streamlit as st
 import pandas as pd
 
 st.set_page_config(page_title="Quản lý dữ liệu hoá đơn rủi ro", layout="wide")
-st.image("banner.jpg", use_column_width=True)
+st.image("banner.jpg", use_container_width=True)
+
 
 
 # Đọc dữ liệu từ file có sẵn
