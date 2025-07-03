@@ -7,7 +7,7 @@ st.markdown(
     <style>
     .stApp img:first-of-type {
         width: 100% !important;
-        height: 1200px !important;
+        height: 800px !important;
         object-fit: cover;
     }
     </style>
