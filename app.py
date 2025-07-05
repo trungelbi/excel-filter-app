@@ -7,12 +7,19 @@ st.image("banner.jpg", use_container_width=True)
 # CSS: Làm đậm tiêu đề bảng (nên đặt trước khi hiển thị bảng)
 st.markdown("""
     <style>
-    thead tr th {
+    /* Làm đậm tiêu đề bảng của data_editor */
+    .stDataFrame table thead th {
         font-weight: bold !important;
-        background-color: #f0f0f0;
+        background-color: #f0f0f0 !important;
+    }
+
+    .st-emotion-cache-1qg05tj th {
+        font-weight: bold !important;
+        background-color: #f0f0f0 !important;
     }
     </style>
     """, unsafe_allow_html=True)
+
 
 # Đọc dữ liệu từ file có sẵn
 @st.cache_data
