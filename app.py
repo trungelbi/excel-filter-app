@@ -77,6 +77,8 @@ def render_html_table(df):
 
 st.markdown(render_html_table(filtered_df), unsafe_allow_html=True)
 
+st.markdown("<div style='margin-top: 20px;'></div>", unsafe_allow_html=True)
 # Tải kết quả về CSV
 csv = filtered_df.to_csv(index=False).encode("utf-8-sig")
+
 st.download_button("📥 Tải kết quả CSV", csv, "ketqua.csv", "text/csv")
