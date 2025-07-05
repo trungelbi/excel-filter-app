@@ -51,13 +51,21 @@ if val5:
 
 # Hiển thị kết quả với phân trang
 st.subheader("📊 Dữ liệu")
-st.data_editor(
-    filtered_df,
-    use_container_width=True,
-    hide_index=True,
-    num_rows="dynamic",
-    disabled=True
-)
+def render_html_table(df):
+    html = "<table style='width:100%; border-collapse: collapse;'>"
+    html += "<thead><tr>"
+    for col in df.columns:
+        html += f"<th style='border: 1px solid #ccc; padding: 8px; font-weight: bold; background-color: #f2f2f2'>{col}</th>"
+    html += "</tr></thead><tbody>"
+    for _, row in df.iterrows():
+        html += "<tr>"
+        for val in row:
+            html += f"<td style='border: 1px solid #ccc; padding: 8px'>{val}</td>"
+        html += "</tr>"
+    html += "</tbody></table>"
+    return html
+
+st.markdown(render_html_table(filtered_df), unsafe_allow_html=True)
 
 # Tải kết quả về CSV
 csv = filtered_df.to_csv(index=False).encode("utf-8-sig")
