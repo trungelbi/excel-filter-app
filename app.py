@@ -4,6 +4,15 @@ import pandas as pd
 st.set_page_config(page_title="Quản lý dữ liệu hoá đơn rủi ro", layout="wide")
 st.image("banner.jpg", use_container_width=True)
 
+# CSS: Làm đậm tiêu đề bảng (nên đặt trước khi hiển thị bảng)
+st.markdown("""
+    <style>
+    thead tr th {
+        font-weight: bold !important;
+        background-color: #f0f0f0;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
 # Đọc dữ liệu từ file có sẵn
 @st.cache_data
@@ -24,10 +33,8 @@ with col2:
 with col3:
     val5 = st.text_input(f"{col_names[2]}", placeholder="Lọc...", key="filter5")
 
-
 # Lọc dữ liệu realtime
 filtered_df = df.copy()
-
 if val1:
     filtered_df = filtered_df[filtered_df[col_names[0]].astype(str).str.contains(val1, case=False, na=False)]
 if val2:
@@ -35,25 +42,16 @@ if val2:
 if val5:
     filtered_df = filtered_df[filtered_df[col_names[2]].astype(str).str.contains(val5, case=False, na=False)]
 
-# Hiển thị kết quả
+# Hiển thị kết quả với phân trang
 st.subheader("📊 Dữ liệu")
 st.data_editor(
     filtered_df,
     use_container_width=True,
     hide_index=True,
-    num_rows="dynamic",  # Cho phép phân trang tự động
-    disabled=True        # Không cho sửa dữ liệu
+    num_rows="dynamic",
+    disabled=True
 )
-st.markdown("""
-    <style>
-    thead tr th {
-        font-weight: bold !important;
-        background-color: #f0f0f0;
-    }
-    </style>
-    """, unsafe_allow_html=True)
 
 # Tải kết quả về CSV
 csv = filtered_df.to_csv(index=False).encode("utf-8-sig")
-
 st.download_button("📥 Tải kết quả CSV", csv, "ketqua.csv", "text/csv")
