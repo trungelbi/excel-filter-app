@@ -24,6 +24,16 @@ with col2:
 with col3:
     val5 = st.text_input(f"{col_names[2]}", placeholder="Lọc...", key="filter5")
 
+st.markdown("""
+    <style>
+    thead tr th {
+        font-weight: bold !important;
+        background-color: #f0f0f0;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+
 # Lọc dữ liệu realtime
 filtered_df = df.copy()
 
@@ -36,7 +46,13 @@ if val5:
 
 # Hiển thị kết quả
 st.subheader("📊 Dữ liệu")
-st.dataframe(filtered_df, use_container_width=True)
+st.data_editor(
+    filtered_df,
+    use_container_width=True,
+    hide_index=True,
+    num_rows="dynamic",  # Cho phép phân trang tự động
+    disabled=True        # Không cho sửa dữ liệu
+)
 
 # Tải kết quả về CSV
 csv = filtered_df.to_csv(index=False).encode("utf-8-sig")
