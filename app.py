@@ -52,17 +52,27 @@ if val5:
 # Hiển thị kết quả với phân trang
 st.subheader("📊 Dữ liệu")
 def render_html_table(df):
-    html = "<table style='width:100%; border-collapse: collapse;'>"
-    html += "<thead><tr>"
+    html = """
+    <div style='max-height: 400px; overflow-y: auto; border: 1px solid #ddd;'>
+        <table style='width:100%; border-collapse: collapse;'>
+            <thead>
+                <tr>
+    """
     for col in df.columns:
         html += f"<th style='border: 1px solid #ccc; padding: 8px; font-weight: bold; background-color: #f2f2f2'>{col}</th>"
     html += "</tr></thead><tbody>"
+
     for _, row in df.iterrows():
         html += "<tr>"
         for val in row:
             html += f"<td style='border: 1px solid #ccc; padding: 8px'>{val}</td>"
         html += "</tr>"
-    html += "</tbody></table>"
+
+    html += """
+            </tbody>
+        </table>
+    </div>
+    """
     return html
 
 st.markdown(render_html_table(filtered_df), unsafe_allow_html=True)
