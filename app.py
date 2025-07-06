@@ -16,52 +16,43 @@ st.title("🔎 QUẢN LÝ DỮ LIỆU HÓA ĐƠN RỦI RO")
 
 # Tạo layout ngang cho 3 ô nhập
 col1, col2, col3 = st.columns(3)
-with col1:
-    val1 = st.text_input(
-        label="",
-        placeholder="Lọc...",
-        key="filter1",
-        label_visibility="collapsed"
-    )
-    st.markdown(f"""
-        <style>
-        div[data-testid="stTextInput"] label {{
-            display: none;
-        }}
-        </style>
-        <div style='margin-top: -40px; font-weight:bold; font-size:16px'>{col_names[0]}</div>
-    """, unsafe_allow_html=True)
-with col1:
-    val1 = st.text_input(
-        label="",
-        placeholder="Lọc...",
-        key="filter1",
-        label_visibility="collapsed"
-    )
-    st.markdown(f"""
-        <style>
-        div[data-testid="stTextInput"] label {{
-            display: none;
-        }}
-        </style>
-        <div style='margin-top: -40px; font-weight:bold; font-size:16px'>{col_names[1]}</div>
-    """, unsafe_allow_html=True)
 
 with col1:
     val1 = st.text_input(
-        label="",
-        placeholder="Lọc...",
-        key="filter1",
+        label="", 
+        placeholder="Lọc...", 
+        key="filter1", 
         label_visibility="collapsed"
     )
-    st.markdown(f"""
-        <style>
-        div[data-testid="stTextInput"] label {{
-            display: none;
-        }}
-        </style>
-        <div style='margin-top: -40px; font-weight:bold; font-size:16px'>{col_names[2]}</div>
-    """, unsafe_allow_html=True)
+    st.markdown(
+        f"<div style='margin-top: -40px; font-weight:bold; font-size:16px'>{col_names[0]}</div>",
+        unsafe_allow_html=True
+    )
+
+with col2:
+    val2 = st.text_input(
+        label="", 
+        placeholder="Lọc...", 
+        key="filter2", 
+        label_visibility="collapsed"
+    )
+    st.markdown(
+        f"<div style='margin-top: -40px; font-weight:bold; font-size:16px'>{col_names[1]}</div>",
+        unsafe_allow_html=True
+    )
+
+with col3:
+    val5 = st.text_input(
+        label="", 
+        placeholder="Lọc...", 
+        key="filter5", 
+        label_visibility="collapsed"
+    )
+    st.markdown(
+        f"<div style='margin-top: -40px; font-weight:bold; font-size:16px'>{col_names[2]}</div>",
+        unsafe_allow_html=True
+    )
+
 
 
 # Lọc dữ liệu realtime
