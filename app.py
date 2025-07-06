@@ -20,7 +20,7 @@ col1, col2, col3 = st.columns(3)
 with col1:
     # Label
     st.markdown(
-        f"<div style='font-weight:bold; font-size:16px'>{col_names[0]}</div>",
+        f"<div style='font-weight:bold; font-size:24px'>{col_names[0]}</div>",
         unsafe_allow_html=True
     )
 
