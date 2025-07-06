@@ -31,13 +31,37 @@ with col1:
         </style>
         <div style='margin-top: -40px; font-weight:bold; font-size:16px'>{col_names[0]}</div>
     """, unsafe_allow_html=True)
-with col2:
-    st.markdown(f"<span style='font-weight:bold; font-size:16px'>{col_names[1]}</span>", unsafe_allow_html=True)
-    val2 = st.text_input("", placeholder="Lọc...", key="filter2")
+with col1:
+    val1 = st.text_input(
+        label="",
+        placeholder="Lọc...",
+        key="filter1",
+        label_visibility="collapsed"
+    )
+    st.markdown(f"""
+        <style>
+        div[data-testid="stTextInput"] label {{
+            display: none;
+        }}
+        </style>
+        <div style='margin-top: -40px; font-weight:bold; font-size:16px'>{col_names[1]}</div>
+    """, unsafe_allow_html=True)
 
-with col3:
-    st.markdown(f"<span style='font-weight:bold; font-size:16px'>{col_names[2]}</span>", unsafe_allow_html=True)
-    val5 = st.text_input("", placeholder="Lọc...", key="filter5")
+with col1:
+    val1 = st.text_input(
+        label="",
+        placeholder="Lọc...",
+        key="filter1",
+        label_visibility="collapsed"
+    )
+    st.markdown(f"""
+        <style>
+        div[data-testid="stTextInput"] label {{
+            display: none;
+        }}
+        </style>
+        <div style='margin-top: -40px; font-weight:bold; font-size:16px'>{col_names[2]}</div>
+    """, unsafe_allow_html=True)
 
 
 # Lọc dữ liệu realtime
