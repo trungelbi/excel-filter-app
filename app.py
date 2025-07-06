@@ -4,23 +4,6 @@ import pandas as pd
 st.set_page_config(page_title="Quản lý dữ liệu hoá đơn rủi ro", layout="wide")
 st.image("banner.jpg", use_container_width=True)
 
-# CSS: Làm đậm tiêu đề bảng (nên đặt trước khi hiển thị bảng)
-st.markdown("""
-    <style>
-    /* Làm đậm tiêu đề bảng của data_editor */
-    .stDataFrame table thead th {
-        font-weight: bold !important;
-        background-color: #f0f0f0 !important;
-    }
-
-    .st-emotion-cache-1qg05tj th {
-        font-weight: bold !important;
-        background-color: #f0f0f0 !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-
 # Đọc dữ liệu từ file có sẵn
 @st.cache_data
 def load_data():
@@ -34,11 +17,16 @@ st.title("🔎 QUẢN LÝ DỮ LIỆU HÓA ĐƠN RỦI RO")
 # Tạo layout ngang cho 3 ô nhập
 col1, col2, col3 = st.columns(3)
 with col1:
-    val1 = st.text_input(f"{col_names[0]}", placeholder="Lọc...", key="filter1")
+    st.markdown(f"<div style='font-size:18px; font-weight:bold'>{col_names[0]}</div>", unsafe_allow_html=True)
+    val1 = st.text_input("", placeholder="Lọc...", key="filter1")
+
 with col2:
-    val2 = st.text_input(f"{col_names[1]}", placeholder="Lọc...", key="filter2")
+    st.markdown(f"<div style='font-size:18px; font-weight:bold'>{col_names[1]}</div>", unsafe_allow_html=True)
+    val2 = st.text_input("", placeholder="Lọc...", key="filter2")
+
 with col3:
-    val5 = st.text_input(f"{col_names[2]}", placeholder="Lọc...", key="filter5")
+    st.markdown(f"<div style='font-size:18px; font-weight:bold'>{col_names[2]}</div>", unsafe_allow_html=True)
+    val5 = st.text_input("", placeholder="Lọc...", key="filter5")
 
 # Lọc dữ liệu realtime
 filtered_df = df.copy()
