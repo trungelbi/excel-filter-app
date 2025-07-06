@@ -25,7 +25,7 @@ with col1:
         label_visibility="collapsed"
     )
     st.markdown(
-        f"<div style='margin-top: -32px; font-weight:bold; font-size:16px'>{col_names[0]}</div>",
+        f"<div style='margin-top: -50px; font-weight:bold; font-size:16px'>{col_names[0]}</div>",
         unsafe_allow_html=True
     )
 
