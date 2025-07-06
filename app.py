@@ -32,28 +32,22 @@ with col1:
 
 
 with col2:
-    val2 = st.text_input(
-        label="", 
-        placeholder="Lọc...", 
-        key="filter2", 
-        label_visibility="collapsed"
-    )
+    # Label cột 2
     st.markdown(
-        f"<div style='margin-top: -40px; font-weight:bold; font-size:16px'>{col_names[1]}</div>",
+        f"<div style='font-weight:bold; font-size:16px'>{col_names[1]}</div>",
         unsafe_allow_html=True
     )
+    st.markdown("<div style='height:10px'></div>", unsafe_allow_html=True)
+    val2 = st.text_input("", placeholder="Lọc...", key="filter2", label_visibility="collapsed")
 
 with col3:
-    val5 = st.text_input(
-        label="", 
-        placeholder="Lọc...", 
-        key="filter5", 
-        label_visibility="collapsed"
-    )
+    # Label cột 3
     st.markdown(
-        f"<div style='margin-top: -40px; font-weight:bold; font-size:16px'>{col_names[2]}</div>",
+        f"<div style='font-weight:bold; font-size:16px'>{col_names[2]}</div>",
         unsafe_allow_html=True
     )
+    st.markdown("<div style='height:10px'></div>", unsafe_allow_html=True)
+    val5 = st.text_input("", placeholder="Lọc...", key="filter5", label_visibility="collapsed")
 
 
 
