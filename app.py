@@ -20,7 +20,7 @@ col1, col2, col3 = st.columns(3)
 with col1:
     # Label
     st.markdown(
-        f"<div style='font-weight:bold; font-size:24px'>{col_names[0]}</div>",
+        f"<div style='font-weight:bold; font-size:22px'>{col_names[0]}</div>",
         unsafe_allow_html=True
     )
 
@@ -34,7 +34,7 @@ with col1:
 with col2:
     # Label cột 2
     st.markdown(
-        f"<div style='font-weight:bold; font-size:16px'>{col_names[1]}</div>",
+        f"<div style='font-weight:bold; font-size:22px'>{col_names[1]}</div>",
         unsafe_allow_html=True
     )
     st.markdown("<div style='height:10px'></div>", unsafe_allow_html=True)
@@ -43,7 +43,7 @@ with col2:
 with col3:
     # Label cột 3
     st.markdown(
-        f"<div style='font-weight:bold; font-size:16px'>{col_names[2]}</div>",
+        f"<div style='font-weight:bold; font-size:22px'>{col_names[2]}</div>",
         unsafe_allow_html=True
     )
     st.markdown("<div style='height:10px'></div>", unsafe_allow_html=True)
