@@ -12,7 +12,11 @@ def load_data():
 df = load_data()
 col_names = df.columns.tolist()
 
-st.title("🔎 QUẢN LÝ DỮ LIỆU HÓA ĐƠN RỦI RO")
+st.markdown(
+    "<h1 style='color: #8B0000;'>🔎 QUẢN LÝ DỮ LIỆU HÓA ĐƠN RỦI RO</h1>",
+    unsafe_allow_html=True
+)
+
 
 # Tạo layout ngang cho 3 ô nhập
 col1, col2, col3 = st.columns(3)
