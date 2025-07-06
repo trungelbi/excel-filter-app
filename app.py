@@ -18,16 +18,18 @@ st.title("🔎 QUẢN LÝ DỮ LIỆU HÓA ĐƠN RỦI RO")
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    val1 = st.text_input(
-        label="", 
-        placeholder="Lọc...", 
-        key="filter1", 
-        label_visibility="collapsed"
-    )
+    # Label
     st.markdown(
-        f"<div style='margin-top: -50px; font-weight:bold; font-size:16px'>{col_names[0]}</div>",
+        f"<div style='font-weight:bold; font-size:16px'>{col_names[0]}</div>",
         unsafe_allow_html=True
     )
+
+    # Tạo khoảng trắng phía trên ô tìm kiếm
+    st.markdown("<div style='height:10px'></div>", unsafe_allow_html=True)
+
+    # Ô tìm kiếm
+    val1 = st.text_input("", placeholder="Lọc...", key="filter1", label_visibility="collapsed")
+
 
 with col2:
     val2 = st.text_input(
