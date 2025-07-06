@@ -17,15 +17,21 @@ st.title("🔎 QUẢN LÝ DỮ LIỆU HÓA ĐƠN RỦI RO")
 # Tạo layout ngang cho 3 ô nhập
 col1, col2, col3 = st.columns(3)
 with col1:
-    st.markdown(f"<div style='font-size:18px; font-weight:bold'>{col_names[0]}</div>", unsafe_allow_html=True)
+    st.markdown(f"""
+        <div style='font-size:18px; font-weight:bold; margin-bottom: 4px;'>{col_names[0]}</div>
+    """, unsafe_allow_html=True)
     val1 = st.text_input("", placeholder="Lọc...", key="filter1")
 
 with col2:
-    st.markdown(f"<div style='font-size:18px; font-weight:bold'>{col_names[1]}</div>", unsafe_allow_html=True)
+    st.markdown(f"""
+        <div style='font-size:18px; font-weight:bold; margin-bottom: 4px;'>{col_names[1]}</div>
+    """, unsafe_allow_html=True)
     val2 = st.text_input("", placeholder="Lọc...", key="filter2")
 
 with col3:
-    st.markdown(f"<div style='font-size:18px; font-weight:bold'>{col_names[2]}</div>", unsafe_allow_html=True)
+    st.markdown(f"""
+        <div style='font-size:18px; font-weight:bold; margin-bottom: 4px;'>{col_names[2]}</div>
+    """, unsafe_allow_html=True)
     val5 = st.text_input("", placeholder="Lọc...", key="filter5")
 
 # Lọc dữ liệu realtime
